@@ -3,9 +3,7 @@ title: "README"
 author: "J. Stephen Gosnell"
 date: "8/21/2020"
 output:
-  html_document:
-#      code_folding: hide
-      keep_md: true
+  github_document
 ---
 
 ```{r setup, include=FALSE}
