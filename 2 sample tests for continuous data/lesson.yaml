@@ -7,7 +7,7 @@
   Version: 2.4.3
 
 - Class: text
-  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.
+  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.Note if you give the wrong answer you may get hints, but swirl may also think calling required packages is a "wrong answer", so you can ignore any feedback when that happens.
 
 - Class: text
   Output: Today we'll review the methods used to analyze continuous data from two populations.  In this case we are comparing the values we observed (usually the means) from two populations.  Under the null hypothesis, there is no difference among the two populations or groups.  We'll start off by considering data from 2 populations that are not connected (not paired).
@@ -62,7 +62,7 @@
   Output: You can ignore the warning about ties. Finally (for the frequentist tests), we can use a sign test (also known as the median test).  However, this test only works for paired data. Paired data occurs when measurements are taken multiple times on the same subject (across time or space, possibly), and the test is actually doing a one-sample test on the differences between the measuremnts.  Our current test does not meet these criteria, so we'll come back to this idea in a moment.  
 
 - Class: cmd_question
-  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself.  The process involves pulling samples (with replacement) from each of your datasets, then constructing a statistic from these.  This creates a null distribution, and then we can compare what we actually found to that distribution to develop a p-value.  To do this load the bootstrapjsg function I provided (you may need to install and require the simpleboot library too), then bootstrap the data. The function is bootstrapjsg, and it requires the data to be broken into 2 groups.  For our problem, try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])
+  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself.  The process involves pulling samples (with replacement) from each of your datasets, then constructing a statistic from these.  This creates a null distribution, and then we can compare what we actually found to that distribution to develop a p-value.  To do this load the bootstrapjsg function I provided (you may need to install and require the simpleboot library too), then bootstrap the data. The function is bootstrapjsg.  You can find the function in the code from class, and it's also avaialble @ https://github.com/jsgosnell/CUNY-BioStats/blob/master/code_examples/bootstrapjsg.R for you to download and source.  The function requires the data to be broken into 2 groups.  For our problem, try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])
   CorrectAnswer: bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])
   AnswerTests: omnitest(correctExpr='bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])')
   Hint: Try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ]).
