@@ -13,10 +13,10 @@
   Output: Today we'll review the methods used to analyze continuous data from two populations.  In this case we are comparing the values we observed (usually the means) from two populations.  Under the null hypothesis, there is no difference among the two populations or groups.  We'll start off by considering data from 2 populations that are not connected (not paired).
 
 - Class: cmd_question
-  Output: This swirl lesson will build directly on our lesson for dealing with one sample of continuous data.  Although most of the functions we'll employ allow you to input data manually or in two groups, we'll focus on using the formula interface to manipulate data from dataframe.  We'll focus on Australian athlete data again.  Load the data from the web-based file using sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T)
-  CorrectAnswer: sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T)
-  AnswerTests: omnitest(correctExpr='sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T)')
-  Hint: Use sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T). Note you are reading a tab delimited file so you use read.table and specify it has a header (since the default is false).
+  Output: This swirl lesson will build directly on our lesson for dealing with one sample of continuous data.  Although most of the functions we'll employ allow you to input data manually or in two groups, we'll focus on using the formula interface to manipulate data from dataframe.  We'll focus on Australian athlete data again.  Load the data from the web-based file using sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)
+  CorrectAnswer: sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)
+  AnswerTests: omnitest(correctExpr='sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)')
+  Hint: Use sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = Tread.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)). Note you are reading a tab delimited file so you use read.table and specify it has a header (since the default is false).
 
 - Class: text
   Output: Good job.  Note you read a tab delimited file so you used read.table and specified it has a header (since the default is false).
@@ -61,11 +61,23 @@
 - Class: text
   Output: You can ignore the warning about ties. Finally (for the frequentist tests), we can use a sign test (also known as the median test).  However, this test only works for paired data. Paired data occurs when measurements are taken multiple times on the same subject (across time or space, possibly), and the test is actually doing a one-sample test on the differences between the measuremnts.  Our current test does not meet these criteria, so we'll come back to this idea in a moment.  
 
+- Class: text
+  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself to make a null distribution.  To do this you'll need to load the bootstrapjsg function. Make sure you have the boot and simpleboot libraries installed.  You can find the function in the code from class, and it's also avaialble @ https://github.com/jsgosnell/CUNY-BioStats/blob/master/code_examples/bootstrapjsg.R for you to download or source.
+  
 - Class: cmd_question
-  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself.  The process involves pulling samples (with replacement) from each of your datasets, then constructing a statistic from these.  This creates a null distribution, and then we can compare what we actually found to that distribution to develop a p-value.  To do this load the bootstrapjsg function I provided (you may need to install and require the boot and simpleboot libraries too), then bootstrap the data. The function is bootstrapjsg.  You can find the function in the code from class, and it's also avaialble @ https://github.com/jsgosnell/CUNY-BioStats/blob/master/code_examples/bootstrapjsg.R for you to download and source.  The function requires the data to be broken into 2 groups.  For our problem, try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])
+  Output: Source means to run an entire script. If you source the script with the function, it will make it avaialble.  Try source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")
+  CorrectAnswer: source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")
+  AnswerTests: omnitest(correctExpr='source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")')
+  Hint: Try source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")!
+
+- Class: text
+  Output: You should now see bootstrapjsg in your environment tab.  Note its labelled a function.  
+ 
+- Class: cmd_question
+  Output: The function requires the data to be broken into 2 groups.  For our problem, try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])  
   CorrectAnswer: bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])
   AnswerTests: omnitest(correctExpr='bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])')
-  Hint: Try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ]).
+  Hint: Try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])!
 
 - Class: text
   Output: Great job! Note the output provides a bootstrapped confidence interval and a p-value!
