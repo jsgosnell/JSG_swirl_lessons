@@ -13,10 +13,10 @@
   Output: Today we'll review how to add other categorical variables to our ANOVA.  There are many ways to do this in R, but we'll continue to focus on using the lm command.
   
 - Class: cmd_question
-  Output: Consider an experiment to determine if different types of gas (regular, premium, ultra) lead to different gas mileages in cars.  In this experiment, 10 cars were each given a full tank of each of the gas types and driven until the tank was empty. The data was used to calculate miles driven per gallon (mpg).  Get the data using gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T).
-  CorrectAnswer: gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T)
+  Output: Consider an experiment to determine if different types of gas (regular, premium, ultra) lead to different gas mileages in cars.  In this experiment, 10 cars were each given a full tank of each of the gas types and driven until the tank was empty. The data was used to calculate miles driven per gallon (mpg).  Get the data using gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringsAsFactors = T).
+  CorrectAnswer: gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringsAsFactors = T)
   AnswerTests: omnitest(correctExpr='gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T)')
-  Hint: Use gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T).
+  Hint: Use gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringsAsFactors = T).
   
 - Class: mult_question
   Output: What is our null hypothesis (Ho)?
