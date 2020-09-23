@@ -15,7 +15,7 @@
 - Class: cmd_question
   Output: Consider an experiment to determine if different types of gas (regular, premium, ultra) lead to different gas mileages in cars.  In this experiment, 10 cars were each given a full tank of each of the gas types and driven until the tank was empty. The data was used to calculate miles driven per gallon (mpg).  Get the data using gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringsAsFactors = T).
   CorrectAnswer: gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringsAsFactors = T)
-  AnswerTests: omnitest(correctExpr='gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T)')
+  AnswerTests: omnitest(correctExpr='gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringsAsFactors = T)')
   Hint: Use gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringsAsFactors = T).
   
 - Class: mult_question
