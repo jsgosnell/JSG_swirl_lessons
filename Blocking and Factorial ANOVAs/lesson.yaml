@@ -89,10 +89,10 @@
   Hint: Look at the p-values for each comparison!
  
 - Class: cmd_question
-  Output: Next's let consider a different experiment.  This time we want to determine if a gas additive impacts miles per gallon.  However, we think the effects may depend on the type of vehicle (Hybrid, Minivan, Sportscar), so we get 20 of each of these vehicles and have 10 of each run using gas with or without the additive.  This is called a factorial design.  Get the data with additive <- read.table("https://dasl.datadescription.com/download/data/3231", header = T).
-  CorrectAnswer: additive <- read.table("https://dasl.datadescription.com/download/data/3231", header = T)
-  AnswerTests: omnitest(correctExpr='additive <- read.table("https://dasl.datadescription.com/download/data/3231", header = T)')
-  Hint: Use additive <- read.table("https://dasl.datadescription.com/download/data/3231", header = T). Note you are reading a tab delimited file so you use read.table and specify it has a header (since the default is false).
+  Output: Next's let consider a different experiment.  This time we want to determine if a gas additive impacts miles per gallon.  However, we think the effects may depend on the type of vehicle (Hybrid, Minivan, Sportscar), so we get 20 of each of these vehicles and have 10 of each run using gas with or without the additive.  This is called a factorial design.  Get the data with additive <- read.table("https://dasl.datadescription.com/download/data/3231", header = T, stringsAsFactors = T).
+  CorrectAnswer: additive <- read.table("https://dasl.datadescription.com/download/data/3231", header = T, stringsAsFactors = T)
+  AnswerTests: omnitest(correctExpr='additive <- read.table("https://dasl.datadescription.com/download/data/3231", header = T, stringsAsFactors = T)')
+  Hint: Use additive <- read.table("https://dasl.datadescription.com/download/data/3231", header = T, stringsAsFactors = T). Note you are reading a tab delimited file so you use read.table and specify it has a header (since the default is false).
   
  
 - Class: cmd_question
@@ -135,7 +135,7 @@
 
 - Class: mult_question
   Output: 'So we now believe there is an interaction between the impact of the gas additive and vehicle type.  That means the impact of gas additive likely depends on vehicle type, so we should analyze each individually.  Graphically this would appear as having non-parallel lines linking gas additives for each vehicle type.  Code and script to make these plots are shared in the lecture files (not reproduced here as ggplot2 is tricky enough).  You can see an example image @ CUNY-BioStats/multimedia/gas_plot.jpg and @ 
-  CUNY-BioStats/multimedia/gas_plot_script.R.  go there now.  Which vehicle type does gas additive not appear to impact mpg?'
+  https://github.com/jsgosnell/CUNY-BioStats/blob/master/multimedia/gas_plot.jpg.  Go there now.  Which vehicle type does gas additive not appear to impact mpg?'
   AnswerChoices: sportscar; minivan; hybrid
   CorrectAnswer: sportscar
   AnswerTests: omnitest(correctVal='sportscar')
