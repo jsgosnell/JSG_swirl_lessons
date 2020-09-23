@@ -7,16 +7,16 @@
   Version: 2.4.3
 
 - Class: text
-  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.
+  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.   Note if you give the wrong answer you may get hints, but swirl may also think calling required packages is a "wrong answer", so you can ignore any feedback when that happens.
 
 - Class: text
   Output: Today we'll review how to add other categorical variables to our ANOVA.  There are many ways to do this in R, but we'll continue to focus on using the lm command.
   
 - Class: cmd_question
-  Output: Consider an experiment to determine if different types of gas (regular, premium, ultra) lead to different gas mileages in cars.  In this experiment, 10 cars were each given a full tank of each of the gas types and driven until the tank was empty. The data was used to calculate miles driven per gallon (mpg).  Get the data using gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv").
-  CorrectAnswer: gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv")
-  AnswerTests: omnitest(correctExpr='gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv")')
-  Hint: Use gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv").
+  Output: Consider an experiment to determine if different types of gas (regular, premium, ultra) lead to different gas mileages in cars.  In this experiment, 10 cars were each given a full tank of each of the gas types and driven until the tank was empty. The data was used to calculate miles driven per gallon (mpg).  Get the data using gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T).
+  CorrectAnswer: gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T)
+  AnswerTests: omnitest(correctExpr='gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T)')
+  Hint: Use gas <- read.csv("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/gas.csv", stringAsFactors = T).
   
 - Class: mult_question
   Output: What is our null hypothesis (Ho)?

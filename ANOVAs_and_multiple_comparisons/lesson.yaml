@@ -7,7 +7,7 @@
   Version: 2.4.3
 
 - Class: text
-  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.
+  Output: Welcome to Swirl! This interface will help review some of the code we've used in class. Note if you give the wrong answer you may get hints, but swirl may also think calling required packages is a "wrong answer", so you can ignore any feedback when that happens.
 
 - Class: text
   Output: Today we'll review how to conduct ANOVA's and relevant post-hoc tests.  There are many ways to do this in R, but we'll focus on using the lm command.
