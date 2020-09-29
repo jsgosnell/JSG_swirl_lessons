@@ -45,9 +45,9 @@
 
 - Class: cmd_question
   Output: We can add a few more wrinkles to the binom.test function.  First, the default null hypothesis value for p (parameter of binomial distribution, not p-value) is .5, but we can change that.  What if we had previous data that suggested Bufo marinus should be right-handed 67% of the time and we used that to determine our null hypothesis.  Use the binom.test function to test that hypothesis.    
-  CorrectAnswer: binom.test(15,17,.75)
+  CorrectAnswer: binom.test(15,17,.67)
   AnswerTests: omnitest(correctExpr='binom.test(15,17,.67)')
-  Hint: Not quite. Remember, the x argument is the number of successes, n is the sample size, and p is the null hypothesis.
+  Hint: Not quite. Remember, the x argument is the number of successes, n is the sample size, and p is the null hypothesis. Try binom.test(x = 15, n = 17,.p = 67).
 
 - Class: mult_question
   Output: 'Great job.  We change the null hypothesis value by changing the p argument in the binom.test function.  Now do we reject or fail to reject the null hypothesis (HO: the proportion of right-handed frogs is .67) at an alpha = .05 level?'
