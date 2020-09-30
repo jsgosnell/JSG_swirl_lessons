@@ -7,7 +7,7 @@
   Version: 2.4.3
 
 - Class: text
-  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.
+  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.  Note if you give the wrong answer you may get hints, but swirl may also think calling required packages is a "wrong answer", so you can ignore any feedback when that happens.
 
 - Class: text
   Output: Today we'll review the binomial test.
@@ -44,7 +44,7 @@
   Output: Great job. Remember, if the p-value is less than .05 (the pre-set alpha level), we reject the null hypothesis. This means we would expect an outcome like we observed or more extreme only 1 time out of 20 (on average) if the null hypothesis were true, so it's unlikely!
 
 - Class: cmd_question
-  Output: We can add a few more wrinkles to the binom.test function.  First, the default null hypothesis value for p (parameter of binomial distribution, not p-value) is .5, but we can change that.  What if we had previous data that suggested Bufo marinus should be right-handed 67% of the time and we used that to determine our null hypothesis.  Use the binom.test function to test that hypothesis.    
+  Output: We can add a few more wrinkles to the binom.test function.  First, the default null hypothesis value for p (parameter of binomial distribution, not p-value) is .5, but we can change that.  What if we had previous data that suggested Bufo marinus should be right-handed 67% of the time and we used that to determine our null hypothesis.  Use the binom.test function to test that hypothesis (you'll need to add or change the p argument).
   CorrectAnswer: binom.test(15,17,.67)
   AnswerTests: omnitest(correctExpr='binom.test(15,17,.67)')
   Hint: Not quite. Remember, the x argument is the number of successes, n is the sample size, and p is the null hypothesis. Try binom.test(x = 15, n = 17,.p = 67).

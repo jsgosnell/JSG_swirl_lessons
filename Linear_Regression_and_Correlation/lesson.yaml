@@ -7,16 +7,16 @@
   Version: 2.4.3
 
 - Class: text
-  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.
+  Output: Welcome to Swirl! This interface will help review some of the code we've used in class.  Note if you give the wrong answer you may get hints, but swirl may also think calling required packages is a "wrong answer", so you can ignore any feedback when that happens.
 
 - Class: text
   Output: Today we'll review how to conduct regression and correlation.  There are many ways to do this in R, but we'll focus on using the lm command.
 
 - Class: cmd_question
   Output: So far in class we've covered ANOVA's and t-tests.  These are both examples of linear models where we investigate how a continuous response variable differs among groups. Regression and correlation instead focus on the linear relationship between two continuous variables.  For example, is there a relationship between traffic intensity and CO2 emissions near a highway?. If we use randomly collected data to assess this question we are looking at the correlation between two variables. We can analyze this question using a dataset from the OZdasl site (http://www.statsci.org/data/general/cofreewy.html for more info) in R. Load the the data using using traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T).
-  CorrectAnswer: traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T)
-  AnswerTests: omnitest(correctExpr='traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T)')
-  Hint: Try traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T)
+  CorrectAnswer: traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T, stringsAsFactors = T)
+  AnswerTests: omnitest(correctExpr='traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T, , stringsAsFactors = T)')
+  Hint: Try traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T, stringsAsFactors = T)
   
 - Class: cmd_question
   Output: Use head to examine the dataset. 
@@ -32,7 +32,7 @@
   Hint: Remember, a null hypothesis is a hypothesis of no difference!
 
 - Class: cmd_question
-  Output: To test this hypothesis, we still use the lm function just like we did for ANOVAs. Try co_traffic_relationship <- lm(CO ~ Traffic, traffic.
+  Output: To test this hypothesis, we still use the lm function just like we did for ANOVAs. Try co_traffic_relationship <- lm(CO ~ Traffic, traffic).
   AnswerTests: omnitest(correctExpr='co_traffic_relationship <- lm(CO ~ Traffic, traffic)')
   Hint: Try co_traffic_relationship <- lm(CO ~ Traffic, traffic).
 
@@ -99,7 +99,7 @@
   AnswerTests: omnitest(correctVal='.021')
 
 - Class: text
-  Output: This response is model-specific (if we changed units it would change!) but is useful for explaining what the model means. Here, each one unit increase in traffic intensity leads to a .02 unit increase in emissions.  
+  Output: This response is measurement-specific (if we changed units it would change!) but is useful for explaining what the model means. Here, each one unit increase in traffic intensity leads to a .02 unit increase in emissions.  
   
 - Class: text
   Output: The math (and functions) for correlation and regression work out the same, so you only need to understand the difference. Correlation analysis is considering a relationship among the variables and typically uses randomly data.  Regression is seeking to develop a response equation so you can predict one variable from another. This implies causation, so you typically want to pick a clear response and explanatory variable and vary the explanatory variable in a controlled manner.  For example, instead of simply collecting data from a highway site, we could simulate vehicle emissions in a lab (running car engines in a closed environment) and measure emissions to verify our results.  The major issue here is realizing correlation does not imply causation! Two variables may be correlated because they both respond to other, untested variables.  
