@@ -88,37 +88,8 @@
   AnswerTests: omnitest(correctExpr='independence_test(Ht ~ Sport, male_400m_wpolo)')
   Hint: Try independence_test(Ht ~ Sport, male_400m_wpolo).
 
-- Class: cmd_question
-  Output: Finally, we can take a Bayesian approach to the question.  The ttestBF function (in the BayesFactor library) provides support for the null or alternative models, but sometimes its has issues with sample size or formula interface.  You can instead get a 2-sample t-test Bayes factor from http://pcl.missouri.edu/bf-two-sample.  Go there now and input the data you need.  To get the t-test value, re-run our t-test with the water polo and 400 m data (t.test(Ht ~ Sport, male_400m_wpolo).
-  CorrectAnswer: t.test(Ht ~ Sport, male_400m_wpolo)
-  AnswerTests: omnitest(correctExpr='t.test(Ht ~ Sport, male_400m_wpolo)')
-  Hint: Try t.test(Ht ~ Sport, male_400m_wpolo).
-
-- Class: cmd_question
-  Output: Then use the summary command to find sample sizes for each group. 
-  CorrectAnswer: summary(male_400m_wpolo)
-  AnswerTests: omnitest(correctExpr='summary(male_400m_wpolo)')
-  Hint: Try summary(male_400m_wpolo).
-
-- Class: mult_question
-  Output: Hit enter to get the Bayes Factor. What is it?
-  AnswerChoices: 297; 1.25; 0.52
-  CorrectAnswer: 297
-  AnswerTests: omnitest(correctVal='297')
-
-- Class: mult_question
-  Output: Great. A Bayes Factor of greater than 1 supports the alternative, and less than 1 supports the null. What does our output suggest?
-  AnswerChoices: support null; support alternative; not sure
-  CorrectAnswer: support alternative
-  AnswerTests: omnitest(correctVal='support alternative')
-  Hint: Is the Bayes Factor greater or less than 1?
-
 - Class: text
-  Output: Good job.  The magnitude of the Bayes Factor also indicates the strength of support (see lecture slides for a scale)
-  
-  
-- Class: text
-  Output: Finally, let's think about tests where we have paired samples. This occurs when we have 2 sets of measurements (like our other examples), but each one from one set is related to a measure in the other set. For example, the same person is measured before and after taking a medication or after exercising.  By including this part of the experimental design in our tests, we reduce some of the noise in our data and thus make it easier to find difference among the measurements.  To do this, we'll use the same functions, but instead of using the formula interface we'll put in each group (like we did already for the bootstrapjsg function). For the t.test and wilcox.test functions, we'll add the argument paired = T.  For the sign test, 2 sample data must be paired, so you don't have to add the argument.     
+  Output: Next, let's think about tests where we have paired samples. This occurs when we have 2 sets of measurements (like our other examples), but each one from one set is related to a measure in the other set. For example, the same person is measured before and after taking a medication or after exercising.  By including this part of the experimental design in our tests, we reduce some of the noise in our data and thus make it easier to find difference among the measurements.  To do this, we'll use the same functions, but instead of using the formula interface we'll put in each group (like we did already for the bootstrapjsg function). For the t.test and wilcox.test functions, we'll add the argument paired = T.  For the sign test, 2 sample data must be paired, so you don't have to add the argument.     
 
 - Class: cmd_question
   Output: We'll practice the paired designs using data collected by a health professor to determine if freshmen really gain weight upon entering college (the freshmen 15).  New students were measured at the beginning of the semester and again 12 weeks later.  Download the data using weight <- read.table("https://dasl.datadescription.com/download/data/3218", header = T)

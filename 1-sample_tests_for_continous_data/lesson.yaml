@@ -107,29 +107,5 @@
 - Class: text
   Output: Great job! Note the output provides a bootstrapped confidence interval and a p-value!
 
-- Class: cmd_question
-  Output: Finally, we can take a Bayesian approach to the question.  The ttestBF function (in the BayesFactor library) provides support for the null or alternative models.  Load hte package then run the function - it has the same arguments as t.test!
-  CorrectAnswer: ttestBF(x = male_400m$Ht, mu = 175.6)
-  AnswerTests: omnitest(correctExpr='ttestBF(x = male_400m$Ht, mu = 175.6)')
-  Hint: Try ttestBF(x = male_400m$Ht, mu = 175.6)
-
-
-- Class: mult_question
-  Output: Great. The output provides a Bayes Factor. What is it?
-  AnswerChoices: 2.93; 1.25; 0.52
-  CorrectAnswer: 2.93
-  AnswerTests: omnitest(correctVal='2.93')
-  Hint: Look after the colon!
-
-- Class: mult_question
-  Output: Great. A Bayes Factor of greater than 1 supports the alternative, and less than 1 supports the null. What does our output suggest?
-  AnswerChoices: support null; support alternative; not sure
-  CorrectAnswer: support alternative
-  AnswerTests: omnitest(correctVal='support alternative')
-  Hint: Is the Bayes Factor greater or less than 1?
-
-- Class: text
-  Output: Good job.  The magnitude of the Bayes Factor also indicates the strength of support (see lecture slides for a scale)
-
 - Class: text
   Output: This concludes our review of analyzing one-sample continuous data.  Note we got similar results from all methods, but the assumptions and p-values (or lack thereof!) differ. Make sure you understand why!
