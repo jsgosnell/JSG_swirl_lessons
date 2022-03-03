@@ -1,6 +1,6 @@
 - Class: meta
-  Course: Swirl_two_sample_continuous data
-  Lesson: 2-sample tests for continuous data
+  Course: JSG_swirl_lessons
+  Lesson: Intro to Bayesan
   Author: J. Stephen Gosnell
   Type: Standard
   Organization: Baruch College, City Univeristy of New York
@@ -10,83 +10,55 @@
   Output: Welcome to Swirl! This interface will help review some of the code we've used in class.Note if you give the wrong answer you may get hints, but swirl may also think calling required packages is a "wrong answer", so you can ignore any feedback when that happens.
 
 - Class: text
-  Output: Today we'll review the methods used to analyze continuous data from two populations.  In this case we are comparing the values we observed (usually the means) from two populations.  Under the null hypothesis, there is no difference among the two populations or groups.  We'll start off by considering data from 2 populations that are not connected (not paired).
+  Output: Today we'll review the methods used to analyze continuous data from one population.  In this case we are comparing the value we observed for some parameter (usually the mean) to a value we set under the null hypothesis.
+
+- Class: cmd_question
+  Output: For most of these tests we can input data as an object (like a column of a dataframe or a list we have created) or by typing it in manually in the function arguments.   We'll practice using a subset of our data on Australian athletes.  Load the data from the web-based file using sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T).
+  CorrectAnswer: sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)
+  AnswerTests: omnitest(correctExpr='sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)')
+  Hint: Use sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T). Note you are reading a tab delimited file so you use read.table and specify it has a header (since the default is false).
+
+- Class: text
+  Output: Good job.  Note you read a tab delimited file so you used read.table and specified it has a header (since the default is false).
+
+- Class: cmd_question
+  Output: Now let's focus on the subset of men that run the 400m dash.  Create an object called male_400m that contains this subset using male_400m <- sport[sport$Sex == "male" & sport$Sport == "T400m",]
+  CorrectAnswer: male_400m <- sport[sport$Sex == "male" & sport$Sport == "T400m",]
+  AnswerTests: omnitest(correctExpr='male_400m <- sport[sport$Sex == "male" & sport$Sport == "T400m",]')
+  Hint: Use male_400m <- sport[sport$Sex == "male" & sport$Sport == "T400m",]. Note you are making a new object from the sport dataframe that has all rows where Sex = male and Sport = T400m.
+
+- Class: text
+  Output: Great. Remember what the notation you used means.  You made a new object from the sport dataframe that has all rows where Sex = male and Sport = T400m.
+
+- Class: cmd_question
+  Output: Finally, we can take a Bayesian approach to the question.  The ttestBF function (in the BayesFactor library) provides support for the null or alternative models.  Load hte package then run the function - it has the same arguments as t.test!
+  CorrectAnswer: ttestBF(x = male_400m$Ht, mu = 175.6)
+  AnswerTests: omnitest(correctExpr='ttestBF(x = male_400m$Ht, mu = 175.6)')
+  Hint: Try ttestBF(x = male_400m$Ht, mu = 175.6)
+
+
+- Class: mult_question
+  Output: Great. The output provides a Bayes Factor. What is it?
+  AnswerChoices: 2.93; 1.25; 0.52
+  CorrectAnswer: 2.93
+  AnswerTests: omnitest(correctVal='2.93')
+  Hint: Look after the colon!
+
+- Class: mult_question
+  Output: Great. A Bayes Factor of greater than 1 supports the alternative, and less than 1 supports the null. What does our output suggest?
+  AnswerChoices: support null; support alternative; not sure
+  CorrectAnswer: support alternative
+  AnswerTests: omnitest(correctVal='support alternative')
+  Hint: Is the Bayes Factor greater or less than 1?
+
+- Class: text
+  Output: Good job.  The magnitude of the Bayes Factor also indicates the strength of support (see lecture slides for a scale)
 
 - Class: cmd_question
   Output: This swirl lesson will build directly on our lesson for dealing with one sample of continuous data.  Although most of the functions we'll employ allow you to input data manually or in two groups, we'll focus on using the formula interface to manipulate data from dataframe.  We'll focus on Australian athlete data again.  Load the data from the web-based file using sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)
   CorrectAnswer: sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)
   AnswerTests: omnitest(correctExpr='sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)')
   Hint: Use sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = Tread.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)). Note you are reading a tab delimited file so you use read.table and specify it has a header (since the default is false).
-
-- Class: text
-  Output: Good job.  Note you read a tab delimited file so you used read.table and specified it has a header (since the default is false).
-
-- Class: cmd_question
-  Output: Now let's focus on comparing the subset of men that run the 400m dash to those who play water polo.  For ease, let's create an object called male_400m_wpolo that contains this subset using male_400m_wpolo <- sport[sport$Sex == "male" & sport$Sport %in% c("T400m", "WPolo"),]. The %in% operator asks if the variable in question matches any element in a provided list.
-  CorrectAnswer: male_400m_wpolo <- sport[sport$Sex == "male" & sport$Sport %in% c("T400m", "WPolo"),]
-  AnswerTests: omnitest(correctExpr='male_400m_wpolo <- sport[sport$Sex == "male" & sport$Sport %in% c("T400m", "WPolo"),]')
-  Hint: Use male_400m_wpolo <- sport[sport$Sex == "male" & sport$Sport %in% c("T400m", "WPolo"),]. Note you are making a new object from the sport dataframe that has all rows where Sex = male and Sport = T400m.
-
-- Class: text
-  Output: Great. Remember what the notation you used means.  You made a new object from the sport dataframe that has all rows where Sex = male and Sport = T400m or WPolo.
-
-- Class: cmd_question
-  Output: First, let's compare the height of these players (Ht column). Since these are both samples, we'll use the t.test function.  The notation is slightly different that what we used previously.  For 2 samples, we'll use the formuala interface to specify the columns we want to compare, then specify the dataset itself. The formula interface can be interpreted as response ~ (explained by) variable, so in our case we'll do t.test(Ht ~ Sport, male_400m_wpolo). Try it. 
-  CorrectAnswer: t.test(Ht ~ Sport, male_400m_wpolo)
-  AnswerTests: omnitest(correctExpr='t.test(Ht ~ Sport, male_400m_wpolo)')
-  Hint: Try t.test(Ht ~ Sport, male_400m_wpolo)
-
-- Class: mult_question
-  Output: Great. By default R conducts a Welch 2-sample test, which means we don't assume the variance of the two groups is equal.  You can over-ride the default by specifying var.equal = T in the function arguments, but you'll need good reason to do so.  What was the p-value from the test?
-  AnswerChoices: <.001; .102; 5
-  CorrectAnswer: <.001
-  AnswerTests: omnitest(correctVal='<.001')
-  
-- Class: mult_question
-  Output: Using the p-value, do we reject or fail to reject the null hypothesis (assume an alpha level of .05)?
-  AnswerChoices: reject; fail to reject; not sure
-  CorrectAnswer: reject
-  AnswerTests: omnitest(correctVal='reject')
-  Hint: If the p-value is less than .05 (the pre-set alpha level), we reject the null hypothesis. This means we would expect an outcome like we observed or more extreme only 1 time out of 20 (on average) if the null hypothesis were true, so it's unlikely!
-
-- Class: text
-  Output: Sometimes we can't (or don't want) to assume the means of the data is normal. In this case we have some other options.  
-
-- Class: cmd_question
-  Output: We can use a rank-sum test, also known as the Wilcoxon test, if the data is symmetric. The function is wilcox.test, and the commands are the same as the t.test function.  Try it below. 
-  CorrectAnswer: wilcox.test(Ht ~ Sport, male_400m_wpolo)
-  AnswerTests: omnitest(correctExpr='wilcox.test(Ht ~ Sport, male_400m_wpolo)')
-  Hint: Try wilcox.test(Ht ~ Sport, male_400m_wpolo).
-
-- Class: text
-  Output: You can ignore the warning about ties. Finally (for the frequentist tests), we can use a sign test (also known as the median test).  However, this test only works for paired data. Paired data occurs when measurements are taken multiple times on the same subject (across time or space, possibly), and the test is actually doing a one-sample test on the differences between the measuremnts.  Our current test does not meet these criteria, so we'll come back to this idea in a moment.  
-
-- Class: text
-  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself to make a null distribution.  To do this you'll need to load the bootstrapjsg function. Make sure you have the boot and simpleboot libraries installed.  You can find the function in the code from class, and it's also avaialble @ https://github.com/jsgosnell/CUNY-BioStats/blob/master/code_examples/bootstrapjsg.R for you to download or source.
-  
-- Class: cmd_question
-  Output: Source means to run an entire script. If you source the script with the function, it will make it avaialble.  Try source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")
-  CorrectAnswer: source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")
-  AnswerTests: omnitest(correctExpr='source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")')
-  Hint: Try source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")!
-
-- Class: text
-  Output: You should now see bootstrapjsg in your environment tab.  Note its labelled a function.  
- 
-- Class: cmd_question
-  Output: The function requires the data to be broken into 2 groups.  For our problem, try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])  
-  CorrectAnswer: bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])
-  AnswerTests: omnitest(correctExpr='bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])')
-  Hint: Try bootstrapjsg(sport[sport$Sex == "male" & sport$Sport == "T400m", "Ht"],  sport[sport$Sex == "male" & sport$Sport == "WPolo", "Ht" ])!
-
-- Class: text
-  Output: Great job! Note the output provides a bootstrapped confidence interval and a p-value!
-  
-- Class: cmd_question
-  Output: One new, non-frequentist option we have for 2+ samples is the use of permutation tests. We discussed permutations, or arrangements of data from a set, during the probability lecture.  Logically, if there are no difference between our populations, we should be able to randomly match group and response variables. Each way of doing this is one permutation (notice these should really be called combination or randomization tests...).  We could find all possible combinations of the data and compute test statistics from those to create a null distribution, then compare that what we actually found to get p-values.  Often times we can't find all the combinations (there are too many!), but a good sample (10,000+) should work. The r function that we'll use for this is independence_test from the coin package. It uses the same arguments as the t-test (including the formula interface). Try it.  
-  CorrectAnswer: independence_test(Ht ~ Sport, male_400m_wpolo)
-  AnswerTests: omnitest(correctExpr='independence_test(Ht ~ Sport, male_400m_wpolo)')
-  Hint: Try independence_test(Ht ~ Sport, male_400m_wpolo).
 
 - Class: cmd_question
   Output: Finally, we can take a Bayesian approach to the question.  The ttestBF function (in the BayesFactor library) provides support for the null or alternative models, but sometimes its has issues with sample size or formula interface.  You can instead get a 2-sample t-test Bayes factor from http://pcl.missouri.edu/bf-two-sample.  Go there now and input the data you need.  To get the t-test value, re-run our t-test with the water polo and 400 m data (t.test(Ht ~ Sport, male_400m_wpolo).
