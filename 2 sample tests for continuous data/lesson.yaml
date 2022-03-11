@@ -93,7 +93,7 @@
 
 - Class: cmd_question
   Output: We'll practice the paired designs using data collected by a health professor to determine if freshmen really gain weight upon entering college (the freshmen 15).  New students were measured at the beginning of the semester and again 12 weeks later.  Download the data using weight <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSuN-Zy9IaDEAnYKAcqCGqZkwOyMDgoqia-z6Huor_3Z0j5Cs0z_GheR9TPT1OleF3HMp5swXum2A5s/pub?gid=0&single=true&output=csv", header = T, stringsAsFactors=T)
-  CorrectAnswer: weight <- read.table("https://dasl.datadescription.com/download/data/3218", header = T)
+  CorrectAnswer: weight <- read.csv("https://dasl.datadescription.com/download/data/3218", header = T, stringsAsFactors = T)
   AnswerTests: omnitest(correctExpr='weight <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSuN-Zy9IaDEAnYKAcqCGqZkwOyMDgoqia-z6Huor_3Z0j5Cs0z_GheR9TPT1OleF3HMp5swXum2A5s/pub?gid=0&single=true&output=csv", header = T, stringsAsFactors=T)')
   Hint: Try weight <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSuN-Zy9IaDEAnYKAcqCGqZkwOyMDgoqia-z6Huor_3Z0j5Cs0z_GheR9TPT1OleF3HMp5swXum2A5s/pub?gid=0&single=true&output=csv", header = T, stringsAsFactors=T).
   
