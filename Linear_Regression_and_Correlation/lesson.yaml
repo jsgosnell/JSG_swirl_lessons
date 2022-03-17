@@ -13,7 +13,7 @@
   Output: Today we'll review how to conduct regression and correlation.  There are many ways to do this in R, but we'll focus on using the lm command.
 
 - Class: cmd_question
-  Output: So far in class we've covered ANOVA's and t-tests.  These are both examples of linear models where we investigate how a continuous response variable differs among groups. Regression and correlation instead focus on the linear relationship between two continuous variables.  For example, is there a relationship between traffic intensity and CO2 emissions near a highway?. If we use randomly collected data to assess this question we are looking at the correlation between two variables. We can analyze this question using a dataset from the OZdasl site (http://www.statsci.org/data/general/cofreewy.html for more info) in R. Load the the data using using traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T).
+  Output: So far in class we've covered ANOVA's and t-tests.  These are both examples of linear models where we investigate how a continuous response variable differs among groups. Regression and correlation instead focus on the linear relationship between two continuous variables.  For example, is there a relationship between traffic intensity and CO2 emissions near a highway?. If we use randomly collected data to assess this question we are looking at the correlation between two variables. We can analyze this question using a dataset from the OZdasl site (http://www.statsci.org/data/general/cofreewy.html for more info) in R. Load the the data using using traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T, stringsAsFactors = T).
   CorrectAnswer: traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T, stringsAsFactors = T)
   AnswerTests: omnitest(correctExpr='traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T, , stringsAsFactors = T)')
   Hint: Try traffic <- read.table("http://www.statsci.org/data/general/cofreewy.txt", header = T, stringsAsFactors = T)
@@ -34,6 +34,7 @@
 - Class: cmd_question
   Output: To test this hypothesis, we still use the lm function just like we did for ANOVAs. Try co_traffic_relationship <- lm(CO ~ Traffic, traffic).
   AnswerTests: omnitest(correctExpr='co_traffic_relationship <- lm(CO ~ Traffic, traffic)')
+  CorrectAnswer: co_traffic_relationship <- lm(CO ~ Traffic, traffic)
   Hint: Try co_traffic_relationship <- lm(CO ~ Traffic, traffic).
 
 - Class: cmd_question
