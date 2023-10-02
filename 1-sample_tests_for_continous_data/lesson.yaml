@@ -87,25 +87,7 @@
   Output: Note these frequentists tests all differ in assumptions about the data (where its from, what it looks like). the fewer assumptions we make, the less power (ability to reject false null hypotheses) we have!
 
 - Class: text
-  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself to make a null distribution.  To do this you'll need to load the bootstrapjsg function. Make sure you have the boot and simpleboot libraries installed.  You can find the function in the code from class, and it's also avaialble @ https://github.com/jsgosnell/CUNY-BioStats/blob/master/code_examples/bootstrapjsg.R for you to download or source.
+  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself to make a null distribution.  To do this you'll need to use a bootrap approach. This is not demonstrated here given swirl coding limitations, but check the lecture notes for guidance.  
   
-- Class: cmd_question
-  Output: Source means to run an entire script. If you source the script with the function, it will make it avaialble.  Try source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")
-  CorrectAnswer: source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")
-  AnswerTests: omnitest(correctExpr='source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")')
-  Hint: Try source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/bootstrapjsg.R")!
-
-- Class: text
-  Output: You should now see bootstrapjsg in your environment tab.  Note its labelled a function.  
- 
-- Class: cmd_question
-  Output: The function requires data1 and null arguments.  
-  CorrectAnswer: bootstrapjsg(data1=male_400m$Ht, null = 175.6)
-  AnswerTests: omnitest(correctExpr='bootstrapjsg(data1=male_400m$Ht, null = 175.6)')
-  Hint: Try bootstrapjsg(data1=male_400m$Ht, null = 175.6)!
-
-- Class: text
-  Output: Great job! Note the output provides a bootstrapped confidence interval and a p-value!
-
 - Class: text
   Output: This concludes our review of analyzing one-sample continuous data.  Note we got similar results from all methods, but the assumptions and p-values (or lack thereof!) differ. Make sure you understand why!
