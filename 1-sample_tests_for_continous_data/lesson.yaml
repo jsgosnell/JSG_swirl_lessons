@@ -13,7 +13,7 @@
   Output: Today we'll review the methods used to analyze continuous data from one population.  In this case we are comparing the value we observed for some parameter (usually the mean) to a value we set under the null hypothesis.
 
 - Class: cmd_question
-  Output: For most of these tests we can input data as an object (like a column of a dataframe or a list we have created) or by typing it in manually in the function arguments.   We'll practice using a subset of our data on Australian athletes.  Load the data from the web-based file using sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T).
+  Output: For most of these tests we can input data as an object (like a column of a dataframe or a list we have created) or by typing it in manually in the function arguments.   We'll practice using a subset of data on Australian athletes.  Load the data from the web-based file using sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T).
   CorrectAnswer: sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)
   AnswerTests: omnitest(correctExpr='sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T)')
   Hint: Use sport <- read.table("http://www.statsci.org/data/oz/ais.txt", header = T, stringsAsFactors = T). Note you are reading a tab delimited file so you use read.table and specify it has a header (since the default is false).
@@ -87,7 +87,7 @@
   Output: Note these frequentists tests all differ in assumptions about the data (where its from, what it looks like). the fewer assumptions we make, the less power (ability to reject false null hypotheses) we have!
 
 - Class: text
-  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself to make a null distribution.  To do this you'll need to use a bootrap approach. This is not demonstrated here given swirl coding limitations, but check the lecture notes for guidance.  
+  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself to make a null distribution.  To do this you'll need to use a bootstrap approach. This is not demonstrated here given swirl coding limitations, but check the lecture notes for guidance.  
   
 - Class: text
   Output: This concludes our review of analyzing one-sample continuous data.  Note we got similar results from all methods, but the assumptions and p-values (or lack thereof!) differ. Make sure you understand why!
