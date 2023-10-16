@@ -107,9 +107,9 @@
   
 - Class: cmd_question
   Output: Compare the the results to those you would obtain using an lm function (run it here!)
-  CorrectAnswer: lm(Sepal.Width ~ Species, not_versicolor)
-  AnswerTests: omnitest(correctExpr='lm(Sepal.Width ~ Species, not_versicolor)')
-  Hint: Try lm(Sepal.Width ~ Species, not_versicolor)  
+  CorrectAnswer: summary(lm(Sepal.Width ~ Species, not_versicolor))
+  AnswerTests: omnitest(correctExpr='summary(lm(Sepal.Width ~ Species, not_versicolor))')
+  Hint: Try summary(lm(Sepal.Width ~ Species, not_versicolor)) 
 
 - Class: mult_question
   Output: How do the p values compare?
