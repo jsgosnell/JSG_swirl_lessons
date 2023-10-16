@@ -89,9 +89,9 @@
   
 - Class: cmd_question
   Output: Now let's consider how t-tests are special cases of ANOVA. Let's focus on comparing I. virginica and I. setosa.  Make a dataset called not_versicolor that holds these species.
-  CorrectAnswer: not_versicolor <- iris[iris$Species == "versicolor",]
-  AnswerTests: omnitest(correctExpr='not_versicolor <- iris[iris$Species == "versicolor",]')
-  Hint: Use not_versicolor <- iris[iris$Species == "versicolor",]. Note you are making a new object from the iris dataframe that has all rows where Species is not equal to versicolor.
+  CorrectAnswer: not_versicolor <- iris[iris$Species != "versicolor",]
+  AnswerTests: omnitest(correctExpr='not_versicolor <- iris[iris$Species != "versicolor",]')
+  Hint: Use not_versicolor <- iris[iris$Species != "versicolor",]. Note you are making a new object from the iris dataframe that has all rows where Species is not equal to versicolor.
 
 - Class: cmd_question
   Output: Compare the sepal width of I. virginica and setosa using t.test.  We can use the same formula interface we used for ANOVAs, but with our not_versicolor dataset.
