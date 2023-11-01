@@ -10,7 +10,7 @@ output:
 knitr::opts_chunk$set(eval = F)
 ```
 
-All swirl lessons that have been created for BIO/ENV 2100 at Baruch College contained in one course. These accompany the [course website](https://sites.google.com/view/biostats/home).  To load them, make sure the swirl package is installed
+All swirl lessons that have been created for BIO/ENV 2100 at Baruch College contained in one course. These accompany the [course notes](https://jsgosnell.github.io/cuny_biostats_book/){target="_blank"}.  To load them, make sure the swirl package is installed
 
 ```{r}
 install.packages("swirl")
