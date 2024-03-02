@@ -78,7 +78,7 @@
   Hint: Try wilcox.test(x = male_400m$Ht, mu = 175.6).
 
 - Class: cmd_question
-  Output: Finally (for the frequentist tests), we can use a sign test (also known as the median test).  tihs test makes no assumptions on the data, but its actually reducing our continuous data to a binary structure (data is above or below mean) and running a binomial test on it. The function (in the BSDA package) is SIGN.test. The only difference is you specify a md (median), not mu!
+  Output: Finally (for the frequentist tests), we can use a sign test (also known as the median test).  This test makes no assumptions on the data, but its actually reducing our continuous data to a binary structure (data is above or below mean) and running a binomial test on it. The function (in the BSDA package) is SIGN.test. The only difference is you specify a md (median), not mu!
   CorrectAnswer: SIGN.test(x = male_400m$Ht, md = 175.6)
   AnswerTests: omnitest(correctExpr='SIGN.test(x = male_400m$Ht, md = 175.6)')
   Hint: Try SIGN.test(x = male_400m$Ht, md = 175.6).
@@ -87,7 +87,13 @@
   Output: Note these frequentists tests all differ in assumptions about the data (where its from, what it looks like). the fewer assumptions we make, the less power (ability to reject false null hypotheses) we have!
 
 - Class: text
-  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself to make a null distribution.  To do this you'll need to use a bootstrap approach. This is not demonstrated here given swirl coding limitations, but check the lecture notes for guidance.  
+  Output: We also have a few non-frequentist options for testing the data.  First, we can bootstrap the data, which means we resample the data itself to make a null distribution.  To do this you'll need to use a bootstrap approach. 
+  
+- Class: cmd_question
+  Output: Bootstraping relies on the idea we can recreate the underlying population by re-sampling from the sample.  There are many ways to do this, but one approach that mimics our current code is the boot.t.test function in the MKinfer package,  Try it now (make sure to use mu!).
+  CorrectAnswer: boot.t.test(x = male_400m$Ht, mu = 175.6)
+  AnswerTests: omnitest(correctExpr='boot.t.test(x = male_400m$Ht, mu = 175.6)')
+  Hint: Try boot.t.test(x = male_400m$Ht, mu = 175.6).  
   
 - Class: text
   Output: This concludes our review of analyzing one-sample continuous data.  Note we got similar results from all methods, but the assumptions and p-values (or lack thereof!) differ. Make sure you understand why!
