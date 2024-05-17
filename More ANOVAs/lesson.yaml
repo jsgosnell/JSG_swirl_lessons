@@ -188,7 +188,7 @@
 - Class: cmd_question
   Output: Our plots look ok, so we can continue.  Now use the Anova command to check the output.
   CorrectAnswer: Anova(additive_hybrid_lm, type = "III")
-  AnswerTests: omnitest(correctVal='Anova(additive_hybrid_lm, type = "III")')
+  AnswerTests: omnitest(correctExpr='Anova(additive_hybrid_lm, type = "III")')
   Hint: Try Anova(additive_hybrid_lm, type = "III")
 
 - Class: mult_question
