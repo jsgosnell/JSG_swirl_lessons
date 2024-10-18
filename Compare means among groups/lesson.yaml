@@ -103,7 +103,7 @@
   Output: Note the test uses a correction (the Welsh test) by default. Run the rest without the correction by adding the var.equal=T argument.
   CorrectAnswer: t.test(Sepal.Width ~ Species, not_versicolor, var.equal=T)
   AnswerTests: omnitest(correctExpr='t.test(Sepal.Width ~ Species, not_versicolor, var.equal=T)')
-  Hint: Try t.test(Sepal.Width ~ Species, not_versicolor)
+  Hint: Try t.test(Sepal.Width ~ Species, not_versicolor, var.equal=T)
   
 - Class: cmd_question
   Output: Compare the the results to those you would obtain using an lm function (run it here!)
