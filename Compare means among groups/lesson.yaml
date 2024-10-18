@@ -119,7 +119,7 @@
   Hint: Remember, a t-test is just a special case of ANOVA
   
 - Class: cmd_question
-  Output: Note there are non-parametric and bootstrap options for tptests and ANOVA's. For the non-parametric version (the Kruskal-Wallis test, which ranks the data and then does analysis on the ranks), we use the kruskal.test function. The arguments are just like the lm function. Try it now (don't save as an object).
+  Output: Note there are non-parametric and bootstrap options for t-tests and ANOVA's. For the non-parametric version (the Kruskal-Wallis test, which ranks the data and then does analysis on the ranks), we use the kruskal.test function. The arguments are just like the lm function. Try it now (don't save as an object).
   CorrectAnswer: kruskal.test(Sepal.Width~Species, iris)
   AnswerTests: omnitest(correctExpr='kruskal.test(Sepal.Width~Species, iris)')
   Hint: Try kruskal.test(Sepal.Width~Species, iris).
@@ -132,6 +132,12 @@
   
 - Class: text
   Output: The resulting matrix shows p-values for each comparison.
+  
+- Class: cmd_question
+  Output: Just like the Kruskal-Wallis test is a non-parametric analogue to ANOVA, the Wilcoxon test (also known as the Mann-Whitney test or Mann-Whitney-Wilcox test) is used when we only have 2 groups to compare (thus the pairwise.wilcox.test...). Compare the sepal width of I. virginica and setosa using wilcox.test.  We can use the same formula interface we used for t.test, but with our not_versicolor dataset.
+  CorrectAnswer: wilcox.test(Sepal.Width ~ Species, not_versicolor)
+  AnswerTests: omnitest(correctExpr='wilcox.test(Sepal.Width ~ Species, not_versicolor)')
+  Hint: Try wilcox.test(Sepal.Width ~ Species, not_versicolor)
 
 - Class: cmd_question
   Output: Finally, the bootstrap option for 3+ groups uses the t1waybt function from the WRS2 package. The arguments are also the same as lm. Install and load the package, then try it. 
@@ -150,6 +156,12 @@
   CorrectAnswer: boot.t.test(Sepal.Width ~ Species, not_versicolor)
   AnswerTests: omnitest(correctExpr='boot.t.test(Sepal.Width ~ Species, not_versicolor)')
   Hint: Try boot.t.test(Sepal.Width ~ Species, not_versicolor) 
+  
+- Class: cmd_question
+  Output: A final option (shown here for 2 groups) is to use permutation tests.  These tests work by rearranging the data in all (theoretically) possible ways and calculating signals for each permutation.  You can then compare what we actually found to that to obtain p-values.  Often times we can't find all the combinations (there are too many!), but a good sample (10,000+) should work. The r function that we'll use for this is independence_test from the coin package. It uses the same arguments as the t-test (including the formula interface). Try it.  
+  CorrectAnswer: independence_test(Sepal.Width ~ Species, not_versicolor)
+  AnswerTests: omnitest(correctExpr='independence_test(Sepal.Width ~ Species, not_versicolor)')
+  Hint: Try independence_test(Sepal.Width ~ Species, not_versicolor) 
 
 - Class: text
   Output: This concludes our initial review of comparing means. 
